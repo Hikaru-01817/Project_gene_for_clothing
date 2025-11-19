@@ -1,0 +1,587 @@
+@charset 'UTF-8';
+
+/*
+COLORS
+================================================ */
+:root {
+    --text: #333;
+    --bg: #fff;
+    --video-opacity: .5;
+    
+    /* Source A: Modern Blue (モダンブルー) */
+    --color-a: #1e40af; 
+    --color-a-bg: #eff6ff; 
+    --color-a-border: #60a5fa; 
+    --color-a-header: #1e3a8a; 
+
+    /* Source B: Modern Red/Rose (モダンレッド) */
+    --color-b: #be123c; 
+    --color-b-bg: #fff1f2;
+    --color-b-border: #fb7185; 
+    --color-b-header: #881337; 
+    
+    /* 共通UI変数 */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: #000;
+        --video-opacity: .7;
+    }
+}
+
+/*
+GENERAL STYLING
+================================================ */
+html {
+    font-size: 100%;
+    scroll-snap-type: y mandatory;
+}
+body {
+	color: var(--text);
+    background: var(--bg);
+    font-family: 'Bree Serif', sans-serif;
+    transition: .5s;
+}
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+.font-bree-serif {
+    font-family: 'Bree Serif', serif;
+}
+
+/*
+COMMON
+================================================ */
+p {
+    line-height: 1.7;
+}
+img {
+    max-width: 100%;
+}
+a:hover {
+    color: #0bd;
+}
+
+/*
+SLIDE MENU STYLING
+================================================ */
+
+/* ハンバーガーボタン */
+.menu-trigger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000; /* 最前面 */
+    cursor: pointer;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.3s;
+}
+.menu-trigger:hover {
+    background-color: #fff;
+}
+
+/* ハンバーガーの3本線 */
+.menu-trigger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* メニューオープン時のボタン変化 */
+.menu-trigger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-trigger.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-trigger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* スライドメニューパネル */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* パネルの幅 */
+    height: 100vh;
+    background-color: #fff;
+    z-index: 999;
+    transform: translateX(100%); /* 初期状態は画面外(右) */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+/* メニューオープン時 */
+.slide-menu.active {
+    transform: translateX(0);
+}
+
+/* メニュー内のコンテンツ */
+.menu-content {
+    padding: 80px 40px 40px; /* 上部はボタンと重ならないように */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.menu-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--text);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+}
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+.menu-link {
+    display: block;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s, padding-left 0.3s;
+    border-bottom: 1px solid #f5f5f5;
+}
+.menu-link:hover {
+    color: var(--color-a); /* Source Aの青 */
+    padding-left: 10px;
+}
+.menu-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.875rem;
+    color: #999;
+    text-align: center;
+}
+
+/* オーバーレイ（背景の暗転） */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; /* ボタン(1000)とパネル(999)の下 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*
+HEADER
+================================================ */
+header {
+    position: relative;
+    margin-bottom: .5rem;
+    scroll-snap-align: start;
+}
+.header-text {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    text-align: center;
+    height: 90vh;
+}
+.header-title {
+    font-size: 2rem;
+}
+.header-name {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+.header-link {
+    font-size: 1.25rem;
+}
+.header-pattern {
+    position: absolute;
+    z-index: 1;
+    background-image: radial-gradient(var(--bg) 0.7px, transparent 0.7px);
+    background-size: 4px 4px;
+}
+header video {
+    object-fit: cover;
+    object-position: center top;
+    opacity: var(--video-opacity);
+}
+.header-text,
+.header-pattern,
+header video {
+    width: 100vw;
+    height: 90vh;
+}
+
+/*
+MAIN CONTENT (BASE / MOBILE)
+================================================ */
+
+/* Base Layout */
+.page-body {
+    background-color: #f2f2f2; 
+}
+
+main.main-content {
+    scroll-snap-align: start;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Genealogy Card Section */
+.genealogy-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-xl);
+}
+
+/* Titles */
+.section-title {
+    font-size: 1.875rem; 
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #1f2937; 
+}
+.subsection-title {
+    font-size: 1.5rem; 
+    line-height: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Grid Layout */
+.genealogy-grid {
+    display: block;
+}
+
+/* Visualization Area */
+.visualization-area {
+    margin-bottom: 2rem;
+}
+
+/* Remake Image & NFC Overlay */
+.remake-image-wrapper {
+    background-color: #e5e7eb; /* bg-gray-200 */
+    border-radius: var(--radius-lg);
+    height: 24rem; /* h-96 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.remake-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.nfc-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 0.75rem;
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+    margin-bottom: 1.5rem;
+}
+
+.progress-track {
+    display: flex;
+    height: 1.5rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.segment-a {
+    background-color: var(--color-a);
+    height: 100%;
+    position: relative;
+    transition: width 0.3s ease-in-out;
+}
+
+.segment-b {
+    background-color: var(--color-b);
+    height: 100%;
+    position: relative;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+}
+
+.label-left {
+    left: 0;
+    padding-left: 0.5rem;
+}
+
+.label-right {
+    right: 0;
+    padding-right: 0.5rem;
+    text-align: right;
+}
+
+/* Legend */
+.legend-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+/* Detail Area Cards */
+.detail-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.source-card {
+    display: block;
+    text-decoration: none !important;
+    border-radius: var(--radius-xl);
+    margin-bottom: 1rem;
+    border-left-width: 4px;
+    border-left-style: solid;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s;
+    flex: 1;
+    overflow: hidden;
+    background-color: white;
+}
+
+.source-card:hover {
+    box-shadow: var(--shadow-xl);
+    border-left-width: 8px;
+    background-color: #f9fafb;
+}
+
+/* Card A Specifics */
+.card-a {
+    background-color: var(--color-a-bg);
+    border-left-color: var(--color-a-border);
+}
+.color-a-text {
+    color: var(--color-a-header);
+}
+
+/* Card B Specifics */
+.card-b {
+    background-color: var(--color-b-bg);
+    border-left-color: var(--color-b-border);
+}
+.color-b-text {
+    color: var(--color-b-header);
+}
+
+/* Card Layout */
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-image-box {
+    width: 100%;
+    position: relative;
+    height: 12rem; 
+    flex-shrink: 0;
+}
+
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    filter: grayscale(100%);
+    transition: transform 0.5s;
+}
+.card-image-box img:hover {
+    filter: grayscale(0);
+}
+
+.source-card:hover .card-image-box img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.card-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    margin-top: 0.25rem;
+    line-height: 1.25;
+}
+
+.source-card:hover .card-title {
+    text-decoration: underline;
+}
+
+.card-percent {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 400;
+}
+
+.card-subtitle {
+    font-size: 0.75rem; /* text-xs */
+    color: #6b7280; /* text-gray-500 */
+    margin-bottom: 0.5rem;
+}
+
+.card-list {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    color: #374151; /* text-gray-700 */
+    font-size: 0.875rem;
+}
+.card-list li {
+    margin-bottom: 0.25rem;
+}
+
+/* Footer Quote Area */
+.quote-area {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.quote-text {
+    color: #4b5563;
+    font-size: 1rem;
+    font-family: 'Bree Serif', serif;
+}
+
+/*
+FOOTER
+================================================ */
+footer {
+    text-align: center;
+    padding-bottom: 3rem;
+    background-color: #000;
+    height: auto;
+    padding: 2rem 0;
+}
+footer p {
+    color: #fff;
+}
+
+/*
+MEDIA QUERIES (TABLET & DESKTOP)
+================================================ */
+
+/* min-width: 600px */
+@media (min-width: 600px) {
+    /* Header */
+    .header-name {
+        font-size: 5rem;
+    }
+}
+
+/* min-width: 768px */
+@media (min-width: 768px) {
+    
+    /* Main Layout */
+    main.main-content {
+        padding: 3rem; /* md:p-12 */
+    }
+
+    .genealogy-card {
+        padding: 2.5rem; /* md:p-10 */
+    }
+
+    /* Detail Area Titles */
+    .detail-area .subsection-title {
+        text-align: left;
+    }
+
+    /* Grid Layout */
+    .genealogy-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3rem; /* gap-12 */
+    }
+
+    /* Visualization Area Spacing */
+    .visualization-area {
+        margin-bottom: 0;
+    }
+
+    /* Card Internal Layout */
+    .card-inner {
+        flex-direction: row;
+    }
+
+    .card-image-box {
+        width: 33.333333%;
+        height: auto;
+    }
+
+    .card-content {
+        width: 66.666667%;
+    }
+}
