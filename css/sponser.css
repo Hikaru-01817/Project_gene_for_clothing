@@ -75,13 +75,14 @@
 
 /* ロゴ */
 .logo-wrapper {
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem;
     text-align: center;
 }
 .logo-img {
     max-width: 390px;
     height: auto;
     object-fit: contain;
+    margin: 0 auto;
     padding: 1rem;
     background-color: #fff;
     border-radius: var(--radius-lg);
