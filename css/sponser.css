@@ -39,7 +39,7 @@
 .section-heading,
 .gallery-heading,
 .contribute-heading {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: var(--color-a-header); /* 青系 */
     margin-bottom: 1.5rem;
