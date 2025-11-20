@@ -75,17 +75,18 @@
 
 /* ロゴ */
 .logo-wrapper {
-    margin: 0 auto 3rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 .logo-img {
-    max-width: 390px;
+    max-width: 300px;
+    width: 100%; /* 追加: 親要素の幅に合わせて伸縮させる */
     height: auto;
     object-fit: contain;
-    margin: 0 auto;
     padding: 1rem;
     background-color: #fff;
     border-radius: var(--radius-lg);
+    box-sizing: border-box; /* 追加: paddingを含めて幅を計算させる */
 }
 
 /* ギャラリーセクション */
@@ -125,4 +126,31 @@
 
 .gallery-item:hover img {
     transform: scale(1.03);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* 貢献セクション */
+.contribute-section {
+    margin-bottom: 0;
+}
+
+.contribute-comment {
+    background-color: var(--color-a-bg);
+    border-left: 5px solid var(--color-a);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    font-style: italic;
+    color: #334155;
+    line-height: 1.8;
 }
