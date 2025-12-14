@@ -2,30 +2,27 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Project gene for clothing</title>
+        <title>JEANOME</title>
         <meta name="description" content="Project gene for clothing">
         <link rel="icon" type="image/svg+xml" href="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS -->
         <link rel="stylesheet" href="https://unpkg.com/destyle.css@1.0.5/destyle.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Inter:wght@100..900&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Inter:wght@400;700;900&display=swap">
         <link rel="stylesheet" href="css/style.css">
     <!-- JavaScript -->
         <script src="js/script.js" defer></script>
     </head>
 
-	<body class="bg-gray-50">
+	<body class="bg-primary-light">
 
         <!-- スライドメニュー -->
         <div class="nav-wrapper">
-            <!-- ハンバーガーボタン -->
             <button class="menu-trigger" id="menu-trigger" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
-            <!-- スライドメニュー本体 -->
             <nav class="slide-menu" id="slide-menu">
                 <div class="menu-content">
                     <h2 class="menu-title">Menu</h2>
@@ -40,116 +37,149 @@
                     </div>
                 </div>
             </nav>
-
-            <!-- 背景のオーバーレイ -->
             <div class="menu-overlay" id="menu-overlay"></div>
         </div>
 
+        <!-- Header -->
         <header id="1">
             <div class="header-text">
-                <p class="header-title">"Remake your memory"</p>
-                <h1 class="header-name">Project Gene for clothing</h1>
+                <p class="header-title">"Vintage Denim Artistry"</p>
+                <h1 class="header-name">JEANOME</h1>
             </div>
             <div class="header-pattern"></div>
-            <div class="video-wrapper">
-                <video src="images/gemini_generated_video_950CF512.mp4" autoplay loop muted>
+            <div class="img-wrapper">
+                <img src="images/Gemini_Generated_Image_l0y9e9l0y9e9l0y9.png" alt="">
             </div>
         </header>
 
-        <!-- メインコンテンツ：ズボンの遺伝子情報 -->
-        <main id="2" class="main-content page-body">
+        <!-- メインコンテンツ：家系図レイアウト -->
+        <main id="2" class="main-content">
 
-            <section class="genealogy-card">
-                <h2 class="section-title">~Genealogy~リメイクの遺伝子情報</h2>
+            <div class="genealogy-wrapper">
+                <h2 class="genealogy-title">GENEALOGY</h2>
 
-                <div class="genealogy-grid">
-                    <!-- 1. 視覚化エリア (Visualization Area) -->
-                    <div class="visualization-area">
-                        <h3 class="subsection-title">素材の貢献比率</h3>
+                <!-- 家系図エリア全体 -->
+                <div class="genealogy-tree">
+                    
+                    <!-- 上段：素材ソース (3カラム) -->
+                    <div class="sources-row">
                         
-                        <!-- リメイクズボンのイメージとNFCエリア -->
-                        <div class="remake-image-wrapper">
-                            <img src="images/IMG_8963.jpg" alt="リメイクされたズボンの写真">
-                        </div>
-
-                        <!-- 進捗バーによる比率の表示 -->
-                        <div class="progress-bar" title="Source A: 70%, Source B: 30%">
-                            <div class="progress-track">
-                                <!-- Source A (70%) -->
-                                <div class="segment-a" style="width: 70%;">
-                                    <span class="progress-label label-left">Source A (70%)</span>
+                        <!-- SOURCE 1 (Left) -->
+                        <div class="source-node">
+                            <div class="node-content">
+                                <div class="badge-wrapper">
+                                    <div class="badge source-badge badge-1">SOURCE 1</div>
                                 </div>
-                                <!-- Source B (30%) -->
-                                <div class="segment-b" style="width: 30%;">
-                                    <span class="progress-label label-right">Source B (30%)</span>
+                                <div class="card-visual">
+                                    <a href="details_a.html" class="visual-link">
+                                        <img src="images/Gemini_Generated_Image_dkzrcvdkzrcvdkzr.png" alt="Source 1 Denim">
+                                    </a>
+                                    <a href="details_a.html" class="btn-more">MORE</a>
+                                </div>
+                                <div class="info-table">
+                                    <dl>
+                                        <div class="info-row"><dt>回収日</dt><dd>2025.11.10</dd></div>
+                                        <div class="info-row"><dt>素材</dt><dd>綿90%</dd></div>
+                                        <div class="info-row"><dt>特徴</dt><dd>ユニクロ</dd></div>
+                                    </dl>
                                 </div>
                             </div>
+                            <!-- 接続線起点 -->
+                            <div class="connector-point"></div>
                         </div>
 
-                        <div class="legend-wrapper">
-                            <span class="color-a-text">ズボンA (70%)</span>
-                            <span class="color-b-text">ズボンB (30%)</span>
+                        <!-- SOURCE 2 (Center) -->
+                        <div class="source-node">
+                            <div class="node-content">
+                                <div class="badge-wrapper">
+                                    <div class="badge source-badge badge-2">SOURCE 2</div>
+                                </div>
+                                <div class="card-visual">
+                                    <a href="details_b.html" class="visual-link">
+                                        <img src="images/Gemini_Generated_Image_dkzrcvdkzrcvdkzr.png" alt="Source 2 Denim">
+                                    </a>
+                                    <a href="details_b.html" class="btn-more">MORE</a>
+                                </div>
+                                <div class="info-table">
+                                    <dl>
+                                        <div class="info-row"><dt>回収日</dt><dd>2025.11.10</dd></div>
+                                        <div class="info-row"><dt>素材</dt><dd>綿98%</dd></div>
+                                        <div class="info-row"><dt>特徴</dt><dd>再利用</dd></div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="connector-point"></div>
+                        </div>
+
+                        <!-- SOURCE 3 (Right) -->
+                        <div class="source-node">
+                            <div class="node-content">
+                                <div class="badge-wrapper">
+                                    <div class="badge source-badge badge-3">SOURCE 3</div>
+                                </div>
+                                <div class="card-visual">
+                                    <a href="details_c.html" class="visual-link">
+                                        <!-- 仮画像 -->
+                                        <img src="https://placehold.co/400x300/1e293b/38bdf8?text=SOURCE+3" alt="Source 3 Denim">
+                                    </a>
+                                    <a href="details_c.html" class="btn-more">MORE</a>
+                                </div>
+                                <div class="info-table">
+                                    <dl>
+                                        <div class="info-row"><dt>回収日</dt><dd>2025.12.01</dd></div>
+                                        <div class="info-row"><dt>素材</dt><dd>ポリエステル</dd></div>
+                                        <div class="info-row"><dt>特徴</dt><dd>ボタン</dd></div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="connector-point"></div>
                         </div>
 
                     </div>
 
-                    <!-- 2. 詳細情報エリア (Detail Area) -->
-                    <div class="detail-area">
-                        <h3 class="subsection-title">素材情報</h3>
-                        
-                        <!-- ズボンAの詳細カード -->
-                        <a href="details_a.html" class="source-card card-a">
-                            <div class="card-inner">
-                                <!-- 左側: 画像エリア -->
-                                <div class="card-image-box">
-                                    <img src="images/Gemini_Generated_Image_dkzrcvdkzrcvdkzr.png" alt="ズボンAの元の写真">
-                                </div>
-
-                                <!-- 右側: 文章情報 -->
-                                <div class="card-content">
-                                    <h4 class="card-title color-a-header">黒デニムA <span class="card-percent">(30% 貢献)</span></h4>
-                                    <p class="card-subtitle">元の種類: カジュアルデニム (ライトブルー)</p>
-                                    
-                                    <ul class="card-list">
-                                        <li>回収日: 2025/11/10</li>
-                                        <li>素材: 綿90% ポリエステル8% ポリウレタン2%</li>
-                                        <li>特徴: ユニクロ</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- ズボンBの詳細カード -->
-                        <a href="details_b.html" class="source-card card-b">
-                            <div class="card-inner">
-                                <!-- 左側: 画像エリア -->
-                                <div class="card-image-box">
-                                    <img src="images/Gemini_Generated_Image_dkzrcvdkzrcvdkzr.png" alt="ズボンBの元の写真">
-                                </div>
-
-                                <!-- 右側: 文章情報 -->
-                                <div class="card-content">
-                                    <h4 class="card-title color-b-header">グレーデニムB <span class="card-percent">(30% 貢献)</span></h4>
-                                    <p class="card-subtitle">元の種類: チノパン (ダークネイビー)</p>
-                                    
-                                    <ul class="card-list">
-                                        <li>回収日: 2025/11/10</li>
-                                        <li>素材: 綿 98%, ポリウレタン 2%</li>
-                                        <li>特徴: ポケットやウエストラインの装飾パーツとして再利用</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-
+                    <!-- 中段：接続ラインエリア -->
+                    <div class="tree-lines-area">
+                        <div class="line-horizontal"></div>
+                        <div class="line-vertical-center"></div>
                     </div>
+
+                    <!-- 下段：完成品 -->
+                    <div class="product-row">
+                        <div class="product-node">
+                            <div class="badge-wrapper">
+                                <div class="badge product-badge">PRODUCT</div>
+                            </div>
+                            
+                            <div class="card-visual product-visual">
+                                <img src="images/IMG_8963.jpg" alt="Remade Product">
+                            </div>
+
+                            <!-- ①貢献度ゲージ (3色対応) -->
+                            <div class="contribution-gauge-wrapper">
+                                <div class="gauge-bar">
+                                    <div class="gauge-segment segment-1" style="width: 40%;" title="SOURCE 1: 40%">
+                                        <span class="gauge-label">SOURCE 1 (40%)</span>
+                                    </div>
+                                    <div class="gauge-segment segment-2" style="width: 30%;" title="SOURCE 2: 30%">
+                                        <span class="gauge-label">SOURCE 2 (30%)</span>
+                                    </div>
+                                    <div class="gauge-segment segment-3" style="width: 30%;" title="SOURCE 3: 30%">
+                                        <span class="gauge-label">SOURCE 3 (30%)</span>
+                                    </div>
+                                </div>
+                                <!-- 凡例 (オプションで表示) -->
+                                <div class="gauge-legend">
+                                    <div class="legend-item"><span class="legend-color color-1"></span>Source 1</div>
+                                    <div class="legend-item"><span class="legend-color color-2"></span>Source 2</div>
+                                    <div class="legend-item"><span class="legend-color color-3"></span>Source 3</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                
-                <div class="quote-area">
-                    <p class="quote-text">
-                        「二つの記憶から、新たなストーリーが生まれる」
-                    </p>
-                </div>
-            </section>
+            </div>
             
         </main>
 
