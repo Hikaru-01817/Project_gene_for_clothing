@@ -593,21 +593,24 @@ main.main-content.page-body {
    ----------------------------------------
 */
 @media (max-width: 900px) {
+
+    /* ヘッダーテキストの位置調整 (追加) */
+    .header-text {
+        justify-content: flex-start; /* 垂直方向：上揃え */
+        padding-top: 25vh; /* 上から25%の位置に配置（お好みで調整してください） */
+    }
+
     main.main-content {
         padding: 2rem 1rem;
     }
     .genealogy-wrapper {
-        padding: 30px 20px;
-        /* スマホでは二重線をシンプルに */
-        border: 4px solid var(--color-denim-dark);
-        outline: none;
-        box-shadow: none;
+        padding: 30px 15px;
     }
 
     /* 縦並び */
     .sources-row {
         flex-direction: column;
-        gap: 0;
+        gap: 0; /* 隙間を詰めて線を繋げる */
     }
     
     /* 横線を消す */
@@ -627,11 +630,11 @@ main.main-content.page-body {
         height: 3rem; 
     }
 
-    /* 商品上の線を復活 */
+    /* 商品上の線を復活させ、上から繋がっているように見せる */
     .product-node::before {
         display: block;
         height: 2rem;
-        margin-top: -10px;
+        margin-top: -10px; /* 位置微調整 */
         margin-bottom: 10px;
     }
     
@@ -639,11 +642,12 @@ main.main-content.page-body {
         aspect-ratio: 4/3; 
     }
     
+    /* スマホでのゲージ調整 */
     .gauge-bar {
-        height: 28px;
+        height: 24px;
     }
     .gauge-segment span {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 }
 
@@ -651,10 +655,9 @@ main.main-content.page-body {
 footer {
     text-align: center;
     padding: 3rem 0;
-    background-color: #111;
-    color: #888;
+    background-color: #000;
+    color: #fff;
     scroll-snap-align: end;
-    font-family: var(--font-serif);
 }
 
 /* PC表示時のヘッダーサイズ調整
