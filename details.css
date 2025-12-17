@@ -1,0 +1,235 @@
+@charset 'UTF-8';
+
+/* DETAILS PAGE STYLING
+================================================ */
+
+/* コンテナ設定 */
+.detail-container {
+    background-color: #fff;
+    /* style.cssの変数(var(--radius-card))に合わせるか、直接指定 */
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 2rem 1.5rem;
+    max-width: 900px; 
+    margin: 0 auto;
+    border: 1px solid #e0dcd0;
+}
+
+@media (min-width: 768px) {
+    .detail-container {
+        padding: 4rem;
+    }
+}
+
+/* パンくずリスト */
+.breadcrumb {
+    max-width: 900px;
+    margin: 0 auto 1rem;
+    font-size: 0.875rem;
+}
+.breadcrumb a {
+    color: #485c85; /* var(--color-denim-light) */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+.breadcrumb a:hover {
+    color: #182445; /* var(--color-denim-dark) */
+    text-decoration: underline;
+}
+
+/* ヘッダーエリア */
+.detail-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px dashed #c28e46; /* var(--color-stitch) */
+    padding-bottom: 2rem;
+}
+
+.detail-label {
+    display: inline-block;
+    background-color: #182445; /* var(--color-denim-dark) */
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding: 0.25rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+    font-family: 'Bree Serif', serif;
+}
+
+.detail-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #182445; /* var(--color-denim-dark) */
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    font-family: 'Bree Serif', serif;
+}
+
+.detail-date {
+    color: #485c85; /* var(--color-denim-light) */
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+}
+
+/* メインビジュアル */
+.detail-visual {
+    margin-bottom: 3rem;
+}
+
+.detail-visual .main-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 2px 4px 10px rgba(29, 45, 80, 0.15); /* var(--shadow-card) */
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.visual-caption {
+    margin-top: 0.75rem;
+    text-align: center;
+    color: #4b5563;
+    font-size: 0.875rem;
+    font-style: italic;
+    font-family: 'Bree Serif', serif;
+}
+
+/* 見出し共通 */
+.story-heading,
+.specs-heading,
+.gallery-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #182445; /* var(--color-denim-dark) */
+    border-left: 6px solid #c28e46; /* var(--color-stitch) */
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-family: 'Bree Serif', serif;
+}
+
+/* ストーリーセクション */
+.story-section {
+    margin-bottom: 4rem;
+}
+
+.story-content {
+    line-height: 2;
+    color: #1d2d50; /* var(--text-main) */
+    font-size: 1rem;
+}
+.story-content p {
+    margin-bottom: 1.5rem;
+}
+.story-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* スペックセクション */
+.specs-section {
+    margin-bottom: 4rem;
+    background-color: #fffcf5; /* 背景色微調整 */
+    border-radius: 4px;
+    padding: 2rem;
+    border: 1px solid #eee;
+}
+
+.specs-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.spec-row {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 0.5rem;
+}
+
+@media (min-width: 600px) {
+    .spec-row {
+        flex-direction: row;
+        align-items: baseline;
+    }
+}
+
+.spec-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.spec-row dt {
+    font-weight: bold;
+    color: #485c85; /* var(--color-denim-light) */
+    width: 100%;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 600px) {
+    .spec-row dt {
+        width: 30%;
+    }
+}
+
+.spec-row dd {
+    width: 100%;
+    color: #1d2d50; /* var(--text-main) */
+    font-weight: 600;
+}
+
+@media (min-width: 600px) {
+    .spec-row dd {
+        width: 70%;
+    }
+}
+
+/* ギャラリーセクション */
+.gallery-section {
+    margin-bottom: 4rem;
+}
+
+.gallery-grid {
+    display: grid;
+    /* PC (デフォルト): 元の設定を維持 */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* PCでは元のCSSの挙動を維持 */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gallery-item img:hover {
+    transform: scale(1.02);
+}
+
+/* スマートフォン表示のみ調整 (追加: 767px以下) */
+@media (max-width: 767px) {
+    .gallery-grid {
+        /* スマホでは縦1列に並べる */
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        /* スマホのみ正方形に固定してサイズを均一化 */
+        aspect-ratio: 1 / 1;
+        overflow: hidden; /* はみ出し防止 */
+        border-radius: 4px;
+        position: relative;
+        background-color: #eee;
+    }
+
+    .gallery-item img {
+        height: 100%;
+        object-fit: cover; /* 枠に合わせてトリミング */
+    }
+}
